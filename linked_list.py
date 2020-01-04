@@ -77,7 +77,13 @@ class LinkedList:
         print("Chosen node to delete is not in list")
         return
 
-
+    def getSize(self):
+        pointer = self.head
+        size = 0
+        while pointer.next:
+            size += 1
+            pointer = pointer.next
+        return size + 1
 
 
 
@@ -85,12 +91,16 @@ llist = LinkedList()
 llist.append("A")
 llist.append("B")
 llist.print_list()
+print(llist.getSize())
 print()
 llist.prepend("C")
 llist.print_list()
+print(llist.getSize())
 print()
 llist.insert("A", "D")
 llist.print_list()
+print(llist.getSize())
 print()
 llist.delete("C")
 llist.print_list()
+print(llist.getSize())
