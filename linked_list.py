@@ -9,6 +9,8 @@
 
 # Arrays exist in contiguous blocks of memory, LLs do not.
 
+# NB - this implementation is a bit shite
+
 # LL Node Class
 class Node:
      def __init__(self, data):
@@ -55,6 +57,28 @@ class LinkedList:
                 pointer = pointer.next
         print("Chosen insertion point is not in list")
         return
+    
+    def delete(self, node):
+        
+        if self.head.data == node:
+            self.head.data = None
+            self.head = self.head.next
+            return
+
+        pointer = self.head
+        while pointer.next:
+            if pointer.next.data == node:
+                remove = pointer.next
+                pointer.next = remove.next
+                remove.data = None
+                remove.next = None
+                return
+            else: pointer = pointer.next
+        print("Chosen node to delete is not in list")
+        return
+
+
+
 
 
 llist = LinkedList()
@@ -66,4 +90,7 @@ llist.prepend("C")
 llist.print_list()
 print()
 llist.insert("A", "D")
+llist.print_list()
+print()
+llist.delete("C")
 llist.print_list()
